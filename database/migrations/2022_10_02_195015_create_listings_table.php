@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 100);
+            $table->longText('description');
+            $table->boolean('public');	
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
