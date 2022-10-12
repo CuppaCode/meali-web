@@ -22,7 +22,7 @@ class ListingController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function listing()
+    public function index()
     {
         $listings = Listing::all();
 

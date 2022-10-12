@@ -16,12 +16,12 @@ use App\Http\Controllers\ListingController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard/listing', [ListingController::class, 'listing'])->name('listing');
+Route::get('/dashboard/listing', [ListingController::class, 'index'])->name('listing');
 
 require __DIR__.'/auth.php';
