@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Listing;
 
 class ListingController extends Controller
 {
@@ -21,8 +22,12 @@ class ListingController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function listing()
+    public function index()
     {
-        return view('listing');
+        $listings = Listing::all();
+
+        return view('listing', [
+            'listings' => $listings
+        ]);
     }
 }
