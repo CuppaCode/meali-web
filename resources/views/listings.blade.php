@@ -1,25 +1,20 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ $listing->title }}
+            {{ __('Listings') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a class="p-2 flex-inline bg-orange-500 rounded text-white lh-lg" href="{{ route('listings') }}">
-                {{ __('Back to overview') }}
-            </a>
-        </div>
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{ $listing->description }}
-            {{ dd($listing) }}
+
+            
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Recipes
+                    Listings
 
-                    @if ( count( $listing->recipes ) > 0 ) 
+                    @if ( count( $listings ) > 0 ) 
                     
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,22 +35,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($listing->recipes as $recipe)
+                                        @foreach ($listings as $listing)
                                             <tr class="border-b">
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    
+                                                    <a href="{{ route('listing', ['id' => $listing->id ]) }}">
                                                         {{ $loop->index + 1 }}
-                                                    
+                                                    </a>
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    
+                                                    <a href="{{ route('listing', ['id' => $listing->id ]) }}">
                                                         {{ $listing->title }}
-                                                    
+                                                    </a>
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
-                                                    
+                                                    <a href="{{ route('listing', ['id' => $listing->id ]) }}">
                                                         {{ $listing->description }}
-                                                    
+                                                    </a>
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                                     
@@ -66,7 +61,7 @@
                                                         </x-primary-button>
                                                         
                                                         <template x-if="show">
-                                                            <x-modal-warning href="{{ route('delete.recipe', ['id' => $recipe->id ])}}"/>
+                                                            <x-modal-warning href="{{ route('delete.listing', ['id' => $listing->id ])}}"/>
                                                         </template>
                                                     </div>
                                                     
@@ -84,7 +79,7 @@
                     @endif
                     
                     <div class="flex items-center pt-5">
-                        Create new recipe
+                        Create new listing
 
                         <div x-data="{show:false}" class="ml-3">
                             <button type="button" @click="show=!show" class="text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2">
@@ -100,7 +95,8 @@
                 
                 </div>
             </div>
-
+            
         </div>
+
     </div>
 </x-app-layout>
