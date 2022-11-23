@@ -1,20 +1,32 @@
-<form method="POST" action="{{ route('create.listing') }}">
+<form class="w-full max-w-sm" method="POST" action="{{ route('create.listing') }}">
     @csrf
 
     <!-- title -->
-    <div>
-        <x-input-label for="title" :value="__('Title')" />
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                <x-input-label for="title" :value="__('Title')" />
+            </label>
+        </div>
+        <div class="md:w-2/3">
+            <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="title" :value="old('title')" required autofocus />
+        </div> 
 
-        <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus />
+        
 
         <x-input-error :messages="$errors->get('title')" class="mt-2" />
     </div>
 
     <!-- description -->
-    <div>
-        <x-input-label for="description" :value="__('Description')" />
-
-        <x-text-input id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus />
+    <div class="md:flex md:items-center mb-6">
+        <div class="md:w-1/3">
+            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                <x-input-label for="description" :value="__('Description')" />
+            </label>
+        </div>
+        <div class="md:w-2/3">
+            <x-text-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="description" :value="old('description')" required autofocus />
+        </div>        
 
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>

@@ -61,14 +61,15 @@
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                                     
 
-                                                    <div x-data="{show:false}">
-                                                        <x-primary-button class="ml-4 bg-red-500" @click="show=!show">
-                                                            {{ __('Remove') }}
-                                                        </x-primary-button>
+                                                    <div x-data="{ open: false }">
+                                                        <span class="cursor-pointer text-xs" @click="open = ! open">
+                                                            <x-heroicons::outline.trash class="w-5 h-5"/>
+                                                        </span>
                                                         
-                                                        <template x-if="show">
-                                                            <x-modal-warning href="{{ route('delete.listing', ['id' => $listing->id ])}}"/>
-                                                        </template>
+                                                                                                              
+                                                        <x-modal-warning href="{{ route('delete.listing', ['id' => $listing->id ])}}"/>
+                                                        
+                                                       
                                                     </div>
                                                     
                                                     {{-- <x-modal-warning/> --}}
