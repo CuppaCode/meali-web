@@ -1,12 +1,21 @@
 <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+    <div class="w-full flex flex-wrap">
+    
+        <!-- Login Section -->
+        <div class="w-full md:w-1/2 flex flex-col">
 
-        <form method="POST" action="{{ route('password.update') }}">
+            <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
+                <x-auth-card>
+                <x-slot name="logo">
+                    <a href="/">
+                        <x-application-logo-inv class="w-20 h-20 fill-current text-gray-500" />
+                    </a>
+                </x-slot>
+            </div>
+
+            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">    
+
+        <form method="POST" class="flex flex-col pt-3 md:pt-8" action="{{ route('password.update') }}">
             @csrf
 
             <!-- Password Reset Token -->
@@ -47,5 +56,11 @@
                 </x-primary-button>
             </div>
         </form>
+    </div>
+</div>
+<div class="w-1/2 shadow-2xl">
+    <img class="object-cover w-full h-screen hidden md:block" src="/assets/images/hamburger-login.jpg">
+</div>
+</div>
     </x-auth-card>
 </x-guest-layout>
