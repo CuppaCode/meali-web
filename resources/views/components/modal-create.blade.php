@@ -1,24 +1,37 @@
-<!--Modal-->
-<div class="modal opacity-100 fixed w-full h-full top-0 left-0 flex items-center justify-center">
-    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    
-    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+@props(['href'])
 
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content py-4 text-left px-6">
-        <!--Title-->
-        <div class="flex justify-between items-center pb-3">
-          <p class="text-2xl font-bold">Simple Modal!</p>
-          <div class="modal-close cursor-pointer z-50">
-            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg>
-          </div>
+<div class="relative z-10" @keydown.window.escape="open = false" x-show="open" aria-labelledby="modal-title" x-ref="dialog" role="dialog" aria-modal="true" x-show="open">
+
+
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
+    x-show="open"
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200 "
+    x-transition:leave-start="opacity-100 "
+    x-transition:leave-end="opacity-0 scale-100"></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+
+      <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+      x-show="open"
+      x-transition:enter="ease-out duration-300" 
+      x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+      x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
+      x-transition:leave="ease-in duration-200" 
+      x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" 
+      x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
+      x-description="Modal panel, show/hide based on modal state." 
+      @click.away="open = false"
+      >
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <x-create-listing-form/>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!--Body-->
-        <x-create-listing-form/>
-        
-      </div>
     </div>
-  </div>
+</div>
