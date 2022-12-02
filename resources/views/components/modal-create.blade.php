@@ -1,6 +1,6 @@
 @props(['href'])
 
-<div class="relative z-10" @keydown.window.escape="open = false" x-show="open" aria-labelledby="modal-title" x-ref="dialog" role="dialog" aria-modal="true" x-show="open">
+<div class="relative z-10" @keydown.window.escape="open = false" x-show="open" aria-labelledby="modal-title" x-ref="dialog" role="dialog" aria-modal="true" x-show="open" style=display:none;>
 
 
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
@@ -26,11 +26,9 @@
       x-description="Modal panel, show/hide based on modal state." 
       @click.away="open = false"
       >
-        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                    <div class="sm:flex sm:items-start">
-                        <x-create-listing-form/>
-                    </div>
-                </div>
+              <div class="sm:flex sm:items-start">
+                  <x-create-listing-form/>
+              </div>
             </div>
         </div>
     </div>

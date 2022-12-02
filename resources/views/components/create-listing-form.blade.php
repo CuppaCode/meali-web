@@ -1,6 +1,6 @@
-<form class="w-full max-w-sm" method="POST" action="{{ route('create.listing') }}">
+<form class="sm:w-full sm:max-w-lg" method="POST" action="{{ route('create.listing') }}">
     @csrf
-
+    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
     <!-- title -->
     <div class="md:flex md:items-center mb-6">
         <div class="md:w-1/3">
@@ -30,8 +30,8 @@
 
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
     </div>
-
-    <div class="flex items-center justify-end mt-4">
+</div>
+    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"">
         
         <x-primary-button class="ml-4">
             {{ __('Add listing') }}
