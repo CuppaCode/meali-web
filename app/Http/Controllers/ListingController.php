@@ -23,18 +23,32 @@ class ListingController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index( $id )
+    {
+        $listing = Listing::find( $id );
+
+        return view('listing', [
+            'listing' => $listing
+        ]);
+    }
+
+    /**
+     * Show the listings
+     *
+     * @return \Illuminate\View\View
+     */
+    public function collection()
     {
         $currentUser = Auth::user();
 
         $listings = Listing::where('user_id', $currentUser->id)->get();
 
-        return view('listing', [
+        return view('listings', [
             'listings' => $listings
         ]);
     }
 
-    public function create(Request $request)
+    public function create( Request $request )
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -50,16 +64,16 @@ class ListingController extends Controller
             'public' => false
         ]);
 
-        return redirect()->route('listing');
+        return redirect()->route('listings');
 
     }
 
-    public function delete($id)
+    public function delete( $id )
     {
-        $listing = Listing::find($id);
+        $listing = Listing::find( $id );
 
         $listing->delete();
 
-        return redirect()->route('listing');
+        return redirect()->route('listings');
     }
 }
