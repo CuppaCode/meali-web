@@ -7,13 +7,12 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <a class="p-2 flex-inline bg-orange-500 rounded text-white lh-lg" href="{{ route('listings') }}">
+            <a class="p-2 inline-block bg-orange-500 rounded text-white lh-lg" href="{{ route('listings') }}" role="button">
                 {{ __('Back to overview') }}
             </a>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{ $listing->description }}
-            {{ dd($listing) }}
+            <p class="py-5">{{ $listing->description }}</p>
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
@@ -49,12 +48,12 @@
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                     
-                                                        {{ $listing->title }}
+                                                        {{ $recipe->title }}
                                                     
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                                     
-                                                        {{ $listing->description }}
+                                                        {{ $recipe->description }}
                                                     
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
@@ -93,7 +92,7 @@
                             </button>
 
                             <template x-if="show">
-                                <x-modal-create/>
+                                <x-modal-create entity='recipe' listing_id='{{ $listing->id }}' />
                             </template>
                         </div>
                     </div>
