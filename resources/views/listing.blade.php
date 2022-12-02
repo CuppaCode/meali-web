@@ -1,20 +1,25 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Listings') }}
+            {{ $listing->title }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-            
+            <a class="p-2 flex-inline bg-orange-500 rounded text-white lh-lg" href="{{ route('listings') }}">
+                {{ __('Back to overview') }}
+            </a>
+        </div>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            {{ $listing->description }}
+            {{ dd($listing) }}
 
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    Listings
+                    Recipes
 
-                    @if ( count( $listings ) > 0 ) 
+                    @if ( count( $listing->recipes ) > 0 ) 
                     
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -27,36 +32,30 @@
                                             #
                                         </th>
                                         <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
-                                            User
+                                            {{ __('Name') }}
                                         </th>
                                         <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
-                                            Name
-                                        </th>
-                                        <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
-                                            Description
-                                        </th>
-                                        <th scope="col" class="text-sm font-bold text-gray-900 px-6 py-4 text-left">
-                                            Public
+                                            {{ __('Description') }}
                                         </th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($listings as $listing)
+                                        @foreach ($listing->recipes as $recipe)
                                             <tr class="border-b">
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                    {{ $loop->index + 1 }}
+                                                    
+                                                        {{ $loop->index + 1 }}
+                                                    
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $listing->user->name }}
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $listing->title }}
+                                                    
+                                                        {{ $listing->title }}
+                                                    
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
-                                                    {{ $listing->description }}
-                                                </td>
-                                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                                    {{ $listing->public ? 'Yes' : 'No' }}
+                                                    
+                                                        {{ $listing->description }}
+                                                    
                                                 </td>
                                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                                     
@@ -67,7 +66,7 @@
                                                         </x-primary-button>
                                                         
                                                         <template x-if="show">
-                                                            <x-modal-warning href="{{ route('delete.listing', ['id' => $listing->id ])}}"/>
+                                                            <x-modal-warning href="{{ route('delete.recipe', ['id' => $recipe->id ])}}"/>
                                                         </template>
                                                     </div>
                                                     
@@ -85,7 +84,7 @@
                     @endif
                     
                     <div class="flex items-center pt-5">
-                        Create new listing
+                        Create new recipe
 
                         <div x-data="{show:false}" class="ml-3">
                             <button type="button" @click="show=!show" class="text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center mr-2">
@@ -101,8 +100,7 @@
                 
                 </div>
             </div>
-            
-        </div>
 
+        </div>
     </div>
 </x-app-layout>
