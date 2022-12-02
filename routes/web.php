@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\RecipeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::get('/dashboard/listings/{id}', [ListingController::class, 'index'])->nam
 Route::get('/dashboard/listings', [ListingController::class, 'collection'])->name('listings');
 Route::post('/dashboard/listings/create', [ListingController::class, 'create'])->name('create.listing');
 Route::get('/dashboard/listings/{id}/delete', [ListingController::class, 'delete'])->name('delete.listing');
+
+Route::post('/dashboard/recipes/create', [RecipeController::class, 'create'])->name('create.recipe');
+Route::get('/dashboard/recipes/{id}/delete', [RecipeController::class, 'delete'])->name('delete.recipe');
 
 
 require __DIR__.'/auth.php';
