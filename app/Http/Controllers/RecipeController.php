@@ -40,4 +40,13 @@ class RecipeController extends Controller
         return redirect()->route('listing', ['id' => $request->listing_id ]);
 
     }
+
+    public function delete( $id )
+    {
+        $recipe = Recipe::find( $id );
+
+        $recipe->delete();
+
+        return redirect()->back();
+    }
 }

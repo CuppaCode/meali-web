@@ -57,7 +57,7 @@
                 @endif
 
                 <!-- Page Content -->
-                <main class="flex p-3 w-full bg-gray-50 h-full overflow-y-scroll">
+                <main class="p-3 w-full bg-gray-50 h-full overflow-y-scroll">
                     {{ $slot }}
                 </main>
             </div>
