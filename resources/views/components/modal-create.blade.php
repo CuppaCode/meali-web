@@ -3,7 +3,7 @@
   'listing_id' => null
 ])
 
-<div class="relative z-10" @keydown.window.escape="open = false" x-show="open" aria-labelledby="modal-title" x-ref="dialog" role="dialog" aria-modal="true" x-show="open">
+<div class="relative z-10" @keydown.window.escape="open = false" x-show="open" aria-labelledby="modal-title" x-ref="dialog" role="dialog" aria-modal="true" x-show="open" style=display:none;>
 
 
   <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
@@ -81,8 +81,6 @@
                           </div>
                       </form>
                     </div>
-
-
                 </div>
             </div>
         </div>
