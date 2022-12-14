@@ -55,7 +55,12 @@
                             <td class="py-4 px-6">
                                 {{ $listing->public ? 'Y' : 'N' }}
                             </td>
-                            <td class="py-4 px-6">
+                            <td class="py-4 px-6 flex flex-row gap-2">
+                                <span x-data="{ open: false }">
+                                    <x-heroicons::outline.pencil @click="open = ! open" class="cursor-pointer w-5 h-5"/>
+                                                                                            
+                                    <x-modal-update entity='listing' id='{{ $listing->id }}' />
+                                </span>
                                 <span x-data="{ open: false }">
                                     <x-heroicons::outline.trash @click="open = ! open" class="cursor-pointer w-5 h-5"/>
                                                                                             

@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/listings/{id}', [ListingController::class, 'index'])->name('listing');
 Route::get('/dashboard/listings', [ListingController::class, 'collection'])->name('listings');
 Route::post('/dashboard/listings/create', [ListingController::class, 'create'])->name('create.listing');
+Route::post('/dashboard/listings/{id}/update', [ListingController::class, 'update'])->name('update.listing');
 Route::get('/dashboard/listings/{id}/delete', [ListingController::class, 'delete'])->name('delete.listing');
 
 Route::post('/dashboard/recipes/create', [RecipeController::class, 'create'])->name('create.recipe');
