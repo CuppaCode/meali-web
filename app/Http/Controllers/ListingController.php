@@ -68,6 +68,22 @@ class ListingController extends Controller
 
     }
 
+    public function update( Request $request, $id )
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255']
+        ]);
+
+        Listing::where('id', $id )
+        ->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('listings');
+    }
+
     public function delete( $id )
     {
         $listing = Listing::find( $id );
