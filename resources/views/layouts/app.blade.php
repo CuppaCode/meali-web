@@ -20,7 +20,7 @@
             <div class="flex flex-row flex-wrap">
                 <!-- Page Heading -->
                 @if (isset($header))
-                    <header class="flex p-4 justify-between h-15 w-full bg-orange-500 shadow">
+                    <header class="flex p-4 justify-between h-15 w-full">
 
                         <button class="flex md:hidden flex-col items-center align-middle" @click="openMenu = !openMenu"
                         :aria-expanded="openMenu" aria-controls="mobile-navigation" aria-label="Navigation Menu">
@@ -62,6 +62,9 @@
                             </x-dropdown>
                         </div>
                     </header>
+                    <div class="-mt-14 -mb-14 h-40 w-full bg-orange-500 -z-10 py-24 px-4">
+                        {{$header}}
+                    </div>
                 @endif
 
                 <!-- Page Content -->

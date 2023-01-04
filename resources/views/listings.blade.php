@@ -1,4 +1,10 @@
 <x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-white leading-tight">
+            {{ __('Listings') }}
+        </h2> 
+    </x-slot>
+
     <div class="max-w-7xl container mx-auto items-center mt-0 py-4">
 
         <div class="w-full md:w-3/4 space-x-4 ">
