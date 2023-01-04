@@ -1,93 +1,43 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Listings') }}
-        </h2>
-    </x-slot>
+    <div class="max-w-7xl container mx-auto items-center mt-0 py-4">
 
-    <div class="max-w-7xl container space-x-4 mx-auto flex items-center mt-0 py-4">
-
-        <div class="w-full md:w-3/4 flex flex-col">
+        <div class="w-full md:w-3/4 space-x-4 ">
                     
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                @if ( count( $listings ) > 0 ) 
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <caption class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-grey dark:bg-white-800">
-                        Listings
-                        <p class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of Flowbite products designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and more.</p>
-                    </caption>
+                @if ( count( $listings ) > 0 )
 
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-grey-100 dark:text-gray-800">
-                        <tr>
-                            <th scope="col" class="py-3 px-6">
-                                #
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Name
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Description
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Public
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
                         @foreach ($listings as $listing)
-                        <tr class="bg-white dark:bg-white-800 dark:border-gray-700">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-gray-400">
-                                {{ $loop->index + 1 }}
-                            </th>
-                            <td class="py-4 px-6">
-                                <a href={{ route('listing', ['id' => $listing->id ]) }}>
-                                    {{ $listing->title }}
-                                </a>
-                            </td>
-                            <td class="py-4 px-6">
-                                <a href={{ route('listing', ['id' => $listing->id ]) }}>
-                                    {{ $listing->description }}
-                                </a>
-                            </td>
-                            <td class="py-4 px-6">
-                                {{ $listing->public ? 'Y' : 'N' }}
-                            </td>
-                            <td class="py-4 px-6">
-                                <span x-data="{ open: false }">
-                                    <x-heroicons::outline.trash @click="open = ! open" class="cursor-pointer w-5 h-5"/>
-                                                                                            
-                                    <x-modal-warning href="{{ route('delete.listing', ['id' => $listing->id ])}}"/>
-                                </span>
-                            </td>
-                        </tr>
+                        <a href="{{ route('listing', ['id' => $listing->id ]) }}" class="mt-1">
+                            <div class="relative bg-white rounded-2xl h-14 my-2 shadow-xl">
+                                <div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-orange-400 left-4 -top-6">
+                                    <x-heroicons::outline.list-bullet class="text-white w-5 h-5"/>
+                                </div>
+                                <div class="flex flex-row justify-between py-4 pl-20 ">
+                                    <p class="text-black ">{{ $listing->title }}</p>
+                                    
+                                    <div class="pr-4 flex gap-2 flex-row">
+                                        <x-heroicons::outline.pencil @click="open = ! open" class="cursor-pointer w-5 h-5"/> 
+                                        <x-heroicons::outline.trash @click="open = ! open" class="cursor-pointer w-5 h-5"/>     
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </a>
                         @endforeach
                     </tbody>
                 </table>
                 @endif
                     
-                <div class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-grey dark:bg-white-800" x-data="{ open: false }" class="ml-3">
-                    
-                    <button type="button" @click="open = ! open" class="text-white bg-orange-400 hover:bg-orange-500 border border-transparent font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center">
-                        Create listing
-                        <svg aria-hidden="true" class="ml-2 -mr-1 w-5 h-5"" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-
-                    <x-modal-create entity='listing'/>
-                </div>
-            </div>
         </div>
 
-        <div class="w-full md:w-1/4 flex flex-col">
-
-            <div class="overflow-x-auto relative shadow-md sm:rounded-lg bg-white">
-
-                test
-                
+        <div id="add-Listings" class="fixed w-full -bottom-56 left-0 right-0 px-3 transition-all duration-300" :class="aListings ? '-translate-y-0' : '-translate-y-52'">
+            <div class="w-full bg-white rounded-t-2xl h-72 shadow-xl flex flex-col justify-center items-center drop-shadow-xl transition-all">
+                <button class="text-white flex object-top top-0 items-center absolute rounded-full py-6 px-6 shadow-xl bg-orange-400 -mt-8" @click="aListings = !aListings"
+                :aria-expanded="aListings" aria-controls="aListings" aria-label="Add Listing">
+                    <x-heroicons::outline.plus x-show="aListings" class="cursor-pointer w-5 h-5"/>
+                    <x-heroicons::outline.x-mark x-show="!aListings" class="cursor-pointer w-5 h-5"/> 
+            </button>
+            <x-modal-create entity='listing'/>
             </div>
         </div>
-
-    </div>
+</div>
 </x-app-layout>
