@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
+use App\Models\Review;
+use App\Models\Restaurant;
 
 class RecipeController extends Controller
 {
@@ -20,24 +22,34 @@ class RecipeController extends Controller
 
     public function create( Request $request )
     {
-
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255']
-        ]);
-
         $currentUser = Auth::user();
 
-        Recipe::create([
+        
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            // 'description' => ['required', 'string', 'max:255']
+        ]);
+        
+        $recipe = Recipe::create([
             'user_id' => $currentUser->id,
             'listing_id' => $request->listing_id,
-            'restaurant_id' => 1,
             'title' => $request->title,
             'description' => $request->description,
             'public' => false
         ]);
+        
+        $restaurant = Restaurant::create([
+            'name' => $request->name,
+            'recipe_id' => $recipe->id,
+        ]);
+        
+        Review::create([
+            'recipe_id' => $recipe->id,
+            'user_id' => $currentUser->id,
+            'rating' => $request->rating,
+        ]);
 
-        return redirect()->route('listing', ['id' => $request->listing_id ]);
+        return redirect()->route('listing', ['id' => $request->listing_id]);
 
     }
 

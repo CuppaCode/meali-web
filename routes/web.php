@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/logout', LogoutController::class, 'perform')->name('logout.perform');
+ });
+
 Route::get('/dashboard/listings/{id}', [ListingController::class, 'index'])->name('listing');
 Route::get('/dashboard/listings', [ListingController::class, 'collection'])->name('listings');
 Route::post('/dashboard/listings/create', [ListingController::class, 'create'])->name('create.listing');
+Route::get('/dashboard/listings/{id}/edit', [ListingController::class, 'edit'])->name('edit.listing');
+Route::post('/dashboard/listings/{id}/update', [ListingController::class, 'update'])->name('update.listing');
 Route::get('/dashboard/listings/{id}/delete', [ListingController::class, 'delete'])->name('delete.listing');
 
 Route::post('/dashboard/recipes/create', [RecipeController::class, 'create'])->name('create.recipe');

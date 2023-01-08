@@ -1,9 +1,11 @@
 @props(['active'])
 
 @php
-$classes = 'w-16 p-4 border text-gray-700 rounded-2xl mb-4';
+$classes = '';
 @endphp
 
-<a {{ $attributes->merge(['class' => $classes]) }}>
-    {{ $slot }}
-</a>
+<li class="pb-2">
+    <a {{ $attributes->merge(['class' => $classes]) }}>
+        {{ $slot }}
+    </a>
+</li>

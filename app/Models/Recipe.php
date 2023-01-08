@@ -30,13 +30,13 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function restaurant()
+    public function restaurants()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->hasMany(Restaurant::class);
     }
 
-    public function review()
+    public function reviews()
     {
-        return $this->morphMany(Review::class);
+        return $this->hasMany(Review::class);
     }
 }

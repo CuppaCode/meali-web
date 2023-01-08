@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('listing_id');
-            $table->foreignId('restaurant_id');
             $table->string('title', 100);
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
