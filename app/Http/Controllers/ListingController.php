@@ -86,7 +86,7 @@ class ListingController extends Controller
 
     public function edit ( $id ) 
     {
-        return view('listing.edit');
+        return view('edit.listing');
     }
 
     public function delete( $id )
