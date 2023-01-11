@@ -16,7 +16,7 @@
                             Dashboard
                         </x-nav-link>
                         <x-nav-link :href="route('listings')" :active="request()->routeIs('listing')">
-                            Listing
+                            Listings
                         </x-nav-link>   
                     </nav>
                 </uL>

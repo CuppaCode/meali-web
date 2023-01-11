@@ -4,7 +4,7 @@
     <x-slot name="header">
 
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ $listing->title }}
+            
         </h2> 
         
     </x-slot>
@@ -13,11 +13,56 @@
     <div class="max-w-7xl container mx-auto items-center mt-6 py-4">
 
         <div class="w-full">
+            <div class="relative bg-white rounded-2xl h-min my-4 shadow-xl">
+                <div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-orange-400 left-4 -top-6">
 
+                    <x-heroicons::outline.list-bullet class="text-white w-5 h-5"/>
+
+                </div>
+                <div class="flex flex-row justify-between py-4 pl-20">
+
+                        <p class="text-black text-lg font-bold">{{ $listing->title }}</p>
+
+                    
+                    <div class="pr-4 flex gap-2 flex-row">
+
+                        <a href="{{ route('listing.edit', ['id' => $listing->id ]) }}" class="z-8">
+
+                            <x-heroicons::outline.pencil @click="open = ! open" class="cursor-pointer w-5 h-5"/>
+
+                        </a>
+
+                        <x-dropdown align="right" width="48">
+
+                            <x-slot name="trigger">
+                                <button>
+                                    <div>
+                                        <x-heroicons::outline.trash class="cursor-pointer w-5 h-5 z-12"/>
+
+                                    </div>
+                                </button>
+                            </x-slot>
+        
+                            <x-slot name="content">
+                                <div class="px-4 py-2">Are you sure?</div>
+                                <a href="{{ route('delete.listing', ['id' => $listing->id ])}}">
+                                    <div class="-mb-1 inline-flex w-full px-4 py-2 text-sm rounded-b-md border border-transparent bg-red-600 text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Yes, I'm sure</div>
+                                </a>
+                            </x-slot>
+                        </x-dropdown>
+                                
+                    </div>
+                    
+                </div>
+                <div class="w-full p-4 mt-1">
+                    {{ $listing->description }}
+                </div>
+            </div>
                 @if ( count( $listing->recipes ) > 0 ) 
 
                     @foreach ($listing->recipes as $recipe)
 
+                    <a href="{{ route('recipe', $recipe->id) }}">
                         <div class="relative bg-white rounded-2xl h-14 my-4 shadow-xl">
 
                             <div class="text-white flex items-center absolute rounded-full py-2 px-3 shadow-xl bg-orange-400 -left-3 top-3">
@@ -30,11 +75,7 @@
 
                             <div class="flex flex-row justify-between py-4 pl-8">
 
-                                <a href="#" class="z-8">
-
-                                    <p class="font-medium text-lg -mt-[1px]">{{ $recipe->title }}</p>
-
-                                </a>
+                                <p class="font-medium text-lg -mt-[1px]">{{ $recipe->title }}</p>
                                 
                                 <div class="pr-4 flex gap-2 flex-row">
                                     
@@ -50,7 +91,7 @@
                                 
                             </div>
                         </div>
-
+                    </a>
                     @endforeach
                 @endif
                     

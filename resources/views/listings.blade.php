@@ -36,7 +36,7 @@
                                 
                                 <div class="pr-4 flex gap-2 flex-row">
 
-                                    <a href="{{ route('edit.listing', ['id' => $listing->id ]) }}" class="z-8">
+                                    <a href="{{ route('listing.edit', ['id' => $listing->id ]) }}" class="z-8">
 
                                         <x-heroicons::outline.pencil @click="open = ! open" class="cursor-pointer w-5 h-5"/>
 

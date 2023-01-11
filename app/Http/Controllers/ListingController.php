@@ -86,7 +86,13 @@ class ListingController extends Controller
 
     public function edit ( $id ) 
     {
-        return view('edit.listing');
+
+        $listing = Listing::where('id', $id )->first();
+
+        return view('listing.edit', [
+            'listing' => $listing
+        ]);
+
     }
 
     public function delete( $id )

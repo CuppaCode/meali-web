@@ -20,6 +20,15 @@ class RecipeController extends Controller
         $this->middleware('auth');
     }
 
+    public function index( $id )
+    {
+        $recipe = Recipe::find( $id );
+
+        return view('recipe', [
+            'recipe' => $recipe
+        ]);
+    }
+
     public function create( Request $request )
     {
         $currentUser = Auth::user();
@@ -38,7 +47,7 @@ class RecipeController extends Controller
             'public' => false
         ]);
         
-        $restaurant = Restaurant::create([
+        Restaurant::create([
             'name' => $request->name,
             'recipe_id' => $recipe->id,
         ]);
@@ -53,12 +62,49 @@ class RecipeController extends Controller
 
     }
 
+    public function update( Request $request, $id )
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255']
+        ]);
+
+        Recipe::where('id', $id )
+        ->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        Restaurant::where('recipe_id', $id )
+        ->update([
+            'name' => $request->name,
+        ]);
+
+        Review::where('recipe_id', $id )
+        ->update([
+            'rating' => $request->rating,
+        ]);
+
+        return redirect()->route('listing', ['id' => $request->listing_id]);
+    }
+
+    public function edit( $id ) 
+    {
+
+        $recipe = Recipe::where( 'id', $id )->first();
+
+        return view('recipe.edit', [
+            'recipe' => $recipe
+        ]);
+
+    }
+
     public function delete( $id )
     {
         $recipe = Recipe::find( $id );
 
         $recipe->delete();
 
-        return redirect()->back();
+        return redirect()->route('listing', ['id' => $recipe->listing_id]);
     }
 }
