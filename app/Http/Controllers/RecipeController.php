@@ -85,7 +85,7 @@ class RecipeController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('listing', ['id' => $request->listing_id]);
+        return redirect()->route('recipe', ['id' => $id]);
     }
 
     public function edit( $id ) 

@@ -81,7 +81,7 @@ class ListingController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->route('listings');
+        return redirect()->route('listing', ['id' => $id]);
     }
 
     public function edit ( $id ) 
