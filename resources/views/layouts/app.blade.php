@@ -20,11 +20,11 @@
             <div class="flex flex-row flex-wrap">
                 <!-- Page Heading -->
                 @if (isset($header))
-                    <header class="flex p-4 justify-between h-15 w-full">
+                    <header class="flex py-4 px-8 justify-between h-15 w-full">
 
-                        <button class="flex flex-col items-center align-middle" @click="openMenu = !openMenu"
+                        <button class="flex flex-col items-center align-middle text-white" @click="openMenu = !openMenu"
                         :aria-expanded="openMenu" aria-controls="mobile-navigation" aria-label="Navigation Menu">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
@@ -32,7 +32,7 @@
                         <div class="sm:flex sm:items-center sm:ml-6">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    <button class="flex items-center text-sm font-medium text-white hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <button class="flex items-center text-sm font-medium text-white focus:outline-none transition duration-150 ease-in-out">
                                         <div>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -62,13 +62,13 @@
                             </x-dropdown>
                         </div>
                     </header>
-                    <div class="-mt-14 -mb-14 h-40 w-full bg-orange-500 -z-10 py-24 px-4">
+                    <div class="-mt-16 -mb-[88px] h-40 w-full bg-orange-500 -z-10 py-24 px-8">
                         {{$header}}
                     </div>
                 @endif
 
                 <!-- Page Content -->
-                <main class="p-3 w-full h-full overflow-y-scroll">
+                <main class="px-8 w-full h-full overflow-y-scroll">
                     {{ $slot }}
                 </main>
             </div>

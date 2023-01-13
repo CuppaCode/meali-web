@@ -19,7 +19,7 @@ class ListingController extends Controller
     }
 
     /**
-     * Show the listings
+     * Show one listing
      *
      * @return \Illuminate\View\View
      */
@@ -65,6 +65,33 @@ class ListingController extends Controller
         ]);
 
         return redirect()->route('listings');
+
+    }
+
+    public function update( Request $request, $id )
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255']
+        ]);
+
+        Listing::where('id', $id )
+        ->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('listing', ['id' => $id]);
+    }
+
+    public function edit ( $id ) 
+    {
+
+        $listing = Listing::where('id', $id )->first();
+
+        return view('listing.edit', [
+            'listing' => $listing
+        ]);
 
     }
 
