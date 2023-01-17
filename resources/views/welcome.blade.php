@@ -24,13 +24,13 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-orange-400 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-center justify-center min-h-screen bg-orange-400 py-4 sm:pt-0">
             
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <x-application-logo class="fill-current" width=357 height=222 />
+                <x-application-logo class="fill-current"/>
                 @if (Route::has('login'))
-                <div class="hidden px-6 py-10 sm:flex justify-center items-center">
+                <div class="px-6 py-10 flex justify-center items-center">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-xl text-white underline font-bold">Dashboard</a>
                     @else
