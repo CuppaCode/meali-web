@@ -35,8 +35,8 @@ class Recipe extends Model
         return $this->hasMany(Restaurant::class);
     }
 
-    public function reviews()
+    public function review()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasOne(Review::class);
     }
 }

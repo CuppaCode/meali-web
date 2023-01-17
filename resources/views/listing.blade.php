@@ -60,17 +60,15 @@
             </div>
                 @if ( count( $listing->recipes ) > 0 ) 
 
-                    @foreach ($listing->recipes as $recipe)
+                    @foreach ($listing->recipes->sortByDesc('review.rating') as $recipe)
 
                     <a href="{{ route('recipe', $recipe->id) }}">
                         <div class="relative bg-white rounded-2xl h-14 my-4 shadow-xl">
 
                             <div class="text-white flex items-center absolute rounded-full py-2 px-3 shadow-xl bg-orange-400 -left-3 top-3">
-                                @foreach ($recipe->reviews as $review)
+                                
+                                <span class="text-xs">{{ $recipe->review->rating }}</span>
 
-                                <span class="text-xs">{{ $review->rating }}</span>
-
-                                @endforeach
                             </div>
 
                             <div class="flex flex-row justify-between py-4 pl-8">
