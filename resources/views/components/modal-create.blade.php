@@ -5,7 +5,7 @@
 
 
 {{-- <x-create-listing-form entity={{ $entity }}/> --}}
-<form class="w-full max-w-sm" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
+<form class="w-full max-w-sm px-5" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
     @csrf
 
     @if ($listing_id)
