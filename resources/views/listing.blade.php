@@ -65,12 +65,12 @@
                     <a href="{{ route('recipe', $recipe->id) }}">
                         <div class="relative bg-white rounded-2xl h-14 my-4 shadow-xl">
 
-                            <div class="text-white flex items-center absolute rounded-full py-2 px-3 shadow-xl bg-orange-400 -left-3 top-3">
-                                @foreach ($recipe->reviews as $review)
+                            <div class="text-white flex items-center justify-center absolute rounded-full h-7 w-7 shadow-xl bg-orange-400 -left-3 top-3">
+                                {{-- @foreach ($recipe->reviews as $review) --}}
 
-                                <span class="text-xs">{{ $review->rating }}</span>
+                                <span class="text-xs relative">{{ $recipe->reviews->first()->rating }}</span>
 
-                                @endforeach
+                                {{-- @endforeach --}}
                             </div>
 
                             <div class="flex flex-row justify-between py-4 pl-8">
