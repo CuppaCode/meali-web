@@ -74,7 +74,7 @@
                                 </label>
                             </div>
                             <div class="md:w-full">
-                                <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="title" value="{{ $listing->title }}" required autofocus />
+                                <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="title" value="{{ $listing->title }}" required autofocus />
                             </div> 
                     
                             
@@ -90,7 +90,7 @@
                                 </label>
                             </div>
                             <div class="md:w-full">
-                                <x-textarea-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="textarea" name="description" content="{{ $listing->description }}" autofocus />
+                                <x-textarea-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="textarea" name="description" content="{{ $listing->description }}" autofocus />
                             </div>        
                     
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />

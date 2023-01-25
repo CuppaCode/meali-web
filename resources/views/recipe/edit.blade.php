@@ -74,7 +74,7 @@
                                 </label>
                             </div>
                             <div class="md:w-full">
-                                <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="title" value="{{ $recipe->title }}" required autofocus />
+                                <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="title" value="{{ $recipe->title }}" required autofocus />
                             </div> 
                     
                             
@@ -90,7 +90,7 @@
                                 </label>
                             </div>
                             <div class="md:w-2/3">
-                                <x-text-input id="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="name" value="{{ $recipe->restaurants->first()->name }}" required autofocus />
+                                <x-text-input id="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="name" value="{{ $recipe->restaurants->first()->name }}" required autofocus />
                             </div>        
 
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -104,7 +104,7 @@
                                 </label>
                             </div>
                             <div class="md:w-2/3">
-                                <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="number" min="1" max="10" name="rating" value="{{ $recipe->reviews->first()->rating }}" required autofocus />
+                                <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="number" min="1" max="10" name="rating" value="{{ $recipe->review->rating }}" required autofocus />
                             </div>        
 
                             <x-input-error :messages="$errors->get('rating')" class="mt-2" />
@@ -118,7 +118,7 @@
                                 </label>
                             </div>
                             <div class="md:w-full">
-                                <x-textarea-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="textarea" name="description" content="{{ $recipe->description }}" autofocus />
+                                <x-textarea-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-1 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="textarea" name="description" content="{{ $recipe->description }}" autofocus />
                             </div>        
                     
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />

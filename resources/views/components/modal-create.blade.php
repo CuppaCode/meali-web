@@ -23,7 +23,7 @@
             </label>
         </div>
         <div class="md:w-2/3">
-            <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="title" :value="old('title')" required autofocus />
+            <x-text-input id="title" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="title" :value="old('title')" required autofocus />
         </div> 
 
         
@@ -41,7 +41,7 @@
             </label>
         </div>
         <div class="md:w-2/3">
-            <x-text-input id="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="name" :value="old('name')" required autofocus />
+            <x-text-input id="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="name" :value="old('name')" required autofocus />
         </div>        
 
         <x-input-error :messages="$errors->get('name')" class="mt-2" />
@@ -55,7 +55,7 @@
             </label>
         </div>
         <div class="md:w-2/3">
-            <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="number" name="rating" :value="old('rating')" required autofocus />
+            <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="number" name="rating" :value="old('rating')" required autofocus />
         </div>        
 
         <x-input-error :messages="$errors->get('rating')" class="mt-2" />
@@ -71,7 +71,7 @@
             </label>
         </div>
         <div class="md:w-2/3">
-            <x-text-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" name="description" :value="old('description')" autofocus />
+            <x-text-input id="description" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="text" name="description" :value="old('description')" autofocus />
         </div>        
 
         <x-input-error :messages="$errors->get('description')" class="mt-2" />
