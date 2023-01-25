@@ -54,9 +54,12 @@
                         {{ __('Log in') }}
                     </x-login-button>
                     
+                    <a class="text-center pt-8 pb-0" href="{{ route('login') }}">
+                        {{ __('Already an account, click here.') }}
+                    </a>
 
                     @if (Route::has('password.request'))
-                            <a class="text-center pt-8 pb-12" href="{{ route('password.request') }}">
+                            <a class="text-center pt-4 pb-12" href="{{ route('password.request') }}">
                                 {{ __('Forgot your password?') }}
                             </a>
                         @endif
