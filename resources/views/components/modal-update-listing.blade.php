@@ -67,7 +67,7 @@
             </label>
         </div>
         <div class="md:w-full">
-            <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="number" name="rating" :value="old('rating')" required autofocus />
+            <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="number" name="rating" min="0" max="10" step="0.1" :value="old('rating')" required autofocus />
         </div>        
 
         <x-input-error :messages="$errors->get('rating')" class="mt-2" />

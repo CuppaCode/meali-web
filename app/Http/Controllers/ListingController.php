@@ -54,7 +54,7 @@ class ListingController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255']
+            // 'description' => ['required', 'string', 'max:255']
         ]);
 
         $currentUser = Auth::user();
@@ -74,7 +74,7 @@ class ListingController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255']
+            // 'description' => ['no', 'string', 'max:255']
         ]);
 
         Listing::where('id', $id )

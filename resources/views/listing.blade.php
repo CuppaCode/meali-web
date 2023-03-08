@@ -65,22 +65,22 @@
                     <a href="{{ route('recipe', $recipe->id) }}">
                         <div class="relative bg-white rounded-2xl h-14 my-4 shadow-xl">
 
-                            <div class="text-white flex items-center absolute rounded-full py-2 px-3 shadow-xl bg-orange-400 -left-3 top-3">
+                            <div class="text-white flex items-center justify-center absolute rounded-full w-8 h-8 shadow-xl bg-orange-400 -left-3 top-3">
                                 
-                                <span class="text-xs">{{ $recipe->review->rating }}</span>
+                                <span class="text-sm relative">{{ $recipe->review->rating }}</span>
 
                             </div>
 
-                            <div class="flex flex-row justify-between py-4 pl-8">
+                            <div class="flex flex-row justify-between py-5 pl-8">
 
-                                <p class="font-medium text-lg -mt-[1px]">{{ $recipe->title }}</p>
+                                <p class="font-medium text-sm -mt-[1px]">{{ $recipe->title }}</p>
                                 
                                 <div class="pr-4 flex gap-2 flex-row">
                                     
 
                                     @foreach ($recipe->restaurants as $restaurant)
 
-                                    <span class="font-light"><x-heroicons::outline.map-pin class="inline-block -mt-2 w-5 h-5"/> {{ $restaurant->name }}</span>
+                                    <span class="font-light text-sm"><x-heroicons::outline.map-pin class="inline-block -mt-2 w-5 h-5"/> {{ $restaurant->name }}</span>
 
                                     @endforeach
 

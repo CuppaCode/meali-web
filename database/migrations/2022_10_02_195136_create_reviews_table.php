@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('recipe_id');
-            $table->integer('rating');
+            $table->decimal('rating', 10, 1);
             $table->timestamps();
         });
     }
