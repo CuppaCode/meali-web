@@ -35,7 +35,8 @@ class RecipeController extends Controller
 
         
         $request->validate([
-            'title' => ['required', 'string', 'max:255'],
+            'title' => ['required', 'string', 'max:32'],
+            // 'rating' => ['required', 'number'],
             // 'description' => ['required', 'string', 'max:255']
         ]);
         
@@ -66,7 +67,7 @@ class RecipeController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255']
+            // 'description' => ['required', 'string', 'max:255']
         ]);
 
         Recipe::where('id', $id )

@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        <a href="dashboard/listings">
+        <a href="{{ route('listings'); }}">
             <div class="relative bg-orange-400 active:bg-orange-300 py-6 px-6 rounded-3xl h-48 my-4 shadow-xl">
                 <div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-white left-4 -top-6">
                     <x-heroicons::outline.list-bullet class="text-black w-5 h-5"/>
