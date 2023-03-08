@@ -104,7 +104,8 @@
                                 </label>
                             </div>
                             <div class="md:w-2/3">
-                                <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="number" min="1" max="10" name="rating" value="{{ $recipe->review->rating }}" required autofocus />
+                                <x-text-input id="rating" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500" type="number" name="rating" min="0" max="10" step="0.1" value="{{ $recipe->review->rating }}" required autofocus />
+
                             </div>        
 
                             <x-input-error :messages="$errors->get('rating')" class="mt-2" />
