@@ -24,6 +24,8 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::find( $id );
 
+        $this->authorize('view', $recipe);
+
         return view('recipe', [
             'recipe' => $recipe
         ]);
@@ -94,6 +96,8 @@ class RecipeController extends Controller
 
         $recipe = Recipe::where( 'id', $id )->first();
 
+        $this->authorize('view', $recipe);
+
         return view('recipe.edit', [
             'recipe' => $recipe
         ]);
@@ -103,6 +107,8 @@ class RecipeController extends Controller
     public function delete( $id )
     {
         $recipe = Recipe::find( $id );
+
+        $this->authorize('delete', $recipe);
 
         $recipe->delete();
 
