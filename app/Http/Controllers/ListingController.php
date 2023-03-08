@@ -59,14 +59,14 @@ class ListingController extends Controller
 
         $currentUser = Auth::user();
 
-        Listing::create([
+        $listing = Listing::create([
             'user_id' => $currentUser->id,
             'title' => $request->title,
             'description' => $request->description,
             'public' => false
         ]);
 
-        return redirect()->route('listings');
+        return redirect()->route('listings')->with('success', "Succesfully created listing: {$listing->title}!");
 
     }
 
@@ -77,13 +77,15 @@ class ListingController extends Controller
             // 'description' => ['no', 'string', 'max:255']
         ]);
 
+        $listing = Listing::where('id', $id )->first();
+
         Listing::where('id', $id )
         ->update([
             'title' => $request->title,
             'description' => $request->description
         ]);
 
-        return redirect()->route('listing', ['id' => $id]);
+        return redirect()->route('listing', ['id' => $id])->with('success', "Succesfully updated listing: {$listing->title}!");
     }
 
     public function edit ( $id ) 
@@ -106,6 +108,6 @@ class ListingController extends Controller
 
         $listing->delete();
 
-        return redirect()->route('listings');
+        return redirect()->route('listings')->with('success', "Succesfully deleted {$listing->title}!");
     }
 }
