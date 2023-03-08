@@ -30,7 +30,7 @@
 
                                 <a href="{{ route('listing', ['id' => $listing->id ]) }}" class="z-8">
 
-                                    <p class="text-black ">{{ $listing->title }}</p>
+                                    <p class="text-black">{{ $listing->title }}</p>
 
                                 </a>
                                 

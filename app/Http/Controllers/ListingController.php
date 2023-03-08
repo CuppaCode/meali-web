@@ -27,6 +27,8 @@ class ListingController extends Controller
     {
         $listing = Listing::find( $id );
 
+        $this->authorize('view', $listing);
+
         return view('listing', [
             'listing' => $listing
         ]);
@@ -86,8 +88,9 @@ class ListingController extends Controller
 
     public function edit ( $id ) 
     {
-
         $listing = Listing::where('id', $id )->first();
+
+        $this->authorize('view', $listing);
 
         return view('listing.edit', [
             'listing' => $listing
@@ -98,6 +101,8 @@ class ListingController extends Controller
     public function delete( $id )
     {
         $listing = Listing::find( $id );
+
+        $this->authorize('delete', $listing);
 
         $listing->delete();
 
