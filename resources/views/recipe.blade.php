@@ -65,6 +65,9 @@
                     <div><img class="object-contain rounded-xl md:block" src="../../assets/images/hamburger-login.jpg"></div>
                     <div><img class="object-contain rounded-xl md:block" src="../../assets/images/hamburger-login.jpg"></div>
                 </div>
+                <div class="created-at text-sm pt-4">
+                    This recipe has been added on {{ $recipe->created_at; }}
+                </div>
             </div>
                     
         </div>

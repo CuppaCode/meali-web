@@ -54,8 +54,8 @@
                         {{ __('Log in') }}
                     </x-login-button>
                     
-                    <a class="text-center pt-8 pb-0" href="{{ route('login') }}">
-                        {{ __('Already an account, click here.') }}
+                    <a class="text-center pt-8 pb-0" href="{{ route('register') }}">
+                        {{ __('Click here to register.') }}
                     </a>
 
                     @if (Route::has('password.request'))
