@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Listing;
 use App\Policies\ListingPolicy;
+use App\Models\Recipe;
+use App\Policies\RecipePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Listing::class => ListingPolicy::class,
+        Recipe::class => RecipePolicy::class
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
