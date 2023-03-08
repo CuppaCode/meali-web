@@ -2,12 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Listing;
+use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Auth\Access\Response;
 
-class ListingPolicy
+class RecipePolicy
 {
     use HandlesAuthorization;
 
@@ -26,12 +25,12 @@ class ListingPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Listing $listing)
+    public function view(User $user, Recipe $recipe)
     {
-        return $user->id === $listing->user_id
+        return $user->id === $recipe->user_id
             ? Response::allow()
             : Response::deny('You are not allowed to view');
     }
@@ -51,24 +50,24 @@ class ListingPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Listing $listing)
+    public function update(User $user, Recipe $recipe)
     {
-        // 
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Listing $listing)
+    public function delete(User $user, Recipe $recipe)
     {
-        return $user->id === $listing->user_id
+        return $user->id === $recipe->user_id
             ? Response::allow()
             : Response::deny('You are not allowed to delete');
     }
@@ -77,10 +76,10 @@ class ListingPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Listing $listing)
+    public function restore(User $user, Recipe $recipe)
     {
         //
     }
@@ -89,10 +88,10 @@ class ListingPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Listing  $listing
+     * @param  \App\Models\Recipe  $recipe
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Listing $listing)
+    public function forceDelete(User $user, Recipe $recipe)
     {
         //
     }
