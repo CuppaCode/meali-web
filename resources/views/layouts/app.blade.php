@@ -73,5 +73,6 @@
                 </main>
             </div>
         </div>
+        <x-flash/>
     </body>
 </html>

@@ -61,7 +61,7 @@ class RecipeController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('listing', ['id' => $request->listing_id]);
+        return redirect()->route('listing', ['id' => $request->listing_id])->with('success', "Succesfully created recipe: {$recipe->title}!");
 
     }
 
@@ -71,6 +71,8 @@ class RecipeController extends Controller
             'title' => ['required', 'string', 'max:255'],
             // 'description' => ['required', 'string', 'max:255']
         ]);
+
+        $recipe = Recipe::where( 'id', $id )->first();
 
         Recipe::where('id', $id )
         ->update([
@@ -88,7 +90,7 @@ class RecipeController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('recipe', ['id' => $id]);
+        return redirect()->route('recipe', ['id' => $id])->with('success', "Succesfully updated recipe: {$recipe->title}!");
     }
 
     public function edit( $id ) 
@@ -112,6 +114,6 @@ class RecipeController extends Controller
 
         $recipe->delete();
 
-        return redirect()->route('listing', ['id' => $recipe->listing_id]);
+        return redirect()->route('listing', ['id' => $recipe->listing_id])->with('success', "Succesfully deleted recipe: {$recipe->title}!");
     }
 }
