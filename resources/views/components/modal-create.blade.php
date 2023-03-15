@@ -5,7 +5,7 @@
 
 
 {{-- <x-create-listing-form entity={{ $entity }}/> --}}
-<form class="w-full max-w-sm px-5" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
+<form class="w-full max-w-sm px-5 flex flex-col" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
     @csrf
 
     @if ($listing_id)
@@ -13,6 +13,15 @@
     <input type="hidden" name="listing_id" value="{{ $listing_id }}">
     
     @endif
+
+    <div class="flex items-center justify-end gap-2 mb-5" x-data="{ photo_taken: false }" >
+        <div class="flex p-3 rounded-full bg-orange-400 self-end shadow-xl drop-shadow-xl" @click="photo_taken = !photo_taken">
+            <x-heroicons::outline.camera class="cursor-pointer w-5 h-5 text-white"/>
+        </div>
+        <span x-show="photo_taken">Upload.jpg</span>
+    </div>
+
+    
 
 
     <!-- title -->
