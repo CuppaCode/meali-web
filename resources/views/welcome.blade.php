@@ -15,7 +15,7 @@
         </style>
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'], ['public/build/css/app.css', 'public/build/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <style>
             body {
