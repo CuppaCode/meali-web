@@ -59,12 +59,15 @@
                 <div class="w-full mt-4">
                     {{ $recipe->description }}
                 </div>
+                
+                @if ($recipe->image)
 
-                <div class="mt-12 grid grid-cols-3 gap-4">
-                    <div><img class="object-contain rounded-xl md:block" src="../../assets/images/hamburger-login.jpg"></div>
-                    <div><img class="object-contain rounded-xl md:block" src="../../assets/images/hamburger-login.jpg"></div>
-                    <div><img class="object-contain rounded-xl md:block" src="../../assets/images/hamburger-login.jpg"></div>
-                </div>
+                    <div class="mt-12 grid grid-cols-1 gap-4">
+                        <div><img class="object-contain rounded-xl md:block" src="{{ asset($recipe->image->url) }}"></div>
+                    </div>
+
+                @endif
+                
                 <div class="created-at text-sm pt-4">
                     This recipe has been added on {{ $recipe->created_at; }}
                 </div>
