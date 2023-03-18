@@ -19,11 +19,16 @@
 
                     
                     <div class="-mt-[1px]">
-                        <div class="block w-full font-bold text-lg">{{ $recipe->title }}</div>
+                        <div class="text-white flex items-center justify-center absolute rounded-full w-12 h-12 shadow-xl bg-orange-400 -left-6 top-3">
+                                
+                            <span class="text-lg relative">{{ $recipe->review->rating }}</span>
+
+                        </div>
+                        <div class="block w-full font-bold ml-5 text-lg">{{ $recipe->title }}</div>
 
                         @foreach ($recipe->restaurants as $restaurant)
 
-                            <div class="font-light -mt-[2px]">{{ $restaurant->name }}</div>
+                            <div class="font-light ml-5 -mt-[2px]">{{ $restaurant->name }}</div>
 
                         @endforeach
                     </div>

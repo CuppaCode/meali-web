@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'newsletter-opt-in' => $request->opt_in_newsletter,
         ]);
 
         event(new Registered($user));
