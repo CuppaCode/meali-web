@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
 use App\Models\Review;
 use App\Models\Restaurant;
+use App\Models\Image;
 
 class RecipeController extends Controller
 {
@@ -34,12 +35,12 @@ class RecipeController extends Controller
     public function create( Request $request )
     {
         $currentUser = Auth::user();
-
         
         $request->validate([
             'title' => ['required', 'string', 'max:32'],
-            // 'rating' => ['required', 'number'],
-            // 'description' => ['required', 'string', 'max:255']
+            'rating' => ['required'],
+            'description' => ['string', 'max:255'],
+            'image' => ['image']
         ]);
         
         $recipe = Recipe::create([
@@ -60,6 +61,20 @@ class RecipeController extends Controller
             'user_id' => $currentUser->id,
             'rating' => $request->rating,
         ]);
+
+        if($request->file('image')){
+
+            //Image work
+            $fileName = time().$request->file('image')->getClientOriginalName();
+            $path = '/storage/'.$request->file('image')->storeAs('images', $fileName, 'public');
+
+            Image::create([
+                'url' => $path,
+                'imageable_id' => $recipe->id,
+                'imageable_type' => 'App\Models\Recipe'
+            ]);
+            
+        }
 
         return redirect()->route('listing', ['id' => $request->listing_id])->with('success', "Succesfully created recipe: {$recipe->title}!");
 

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="assets/apple-asset.png">
+        <link rel="apple-touch-icon" href="/assets/images/apple-asset.png">
 
         <title>Meali</title>
 

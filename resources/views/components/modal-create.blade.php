@@ -5,12 +5,20 @@
 
 
 {{-- <x-create-listing-form entity={{ $entity }}/> --}}
-<form class="w-full max-w-sm px-5" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
+<form enctype="multipart/form-data" class="w-full max-w-sm px-5 flex flex-col" x-show="!aListings" method="POST" action="{{ route('create.'.$entity) }}">
     @csrf
 
     @if ($listing_id)
     
     <input type="hidden" name="listing_id" value="{{ $listing_id }}">
+
+    <div class="flex items-center justify-end gap-2 mb-5">
+        <label for="image" class="flex p-3 rounded-full bg-orange-400 self-end shadow-xl drop-shadow-xl">
+            <x-heroicons::outline.camera class="cursor-pointer w-5 h-5 text-white"/>
+        </label>
+        <input type="file" id="image" name="image" capture="environment" accept=".jpeg, .jpg, .png, .webp" oninput="document.querySelector('#image-name-wrapper').innerHTML = this.value.split('\\')[this.value.split('\\').length - 1]" hidden>
+        <span id="image-name-wrapper"></span>
+    </div>
     
     @endif
 

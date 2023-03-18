@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use App\Models\User;
 use App\Models\Listing;
 use App\Models\Restaurant;
 use App\Models\Review;
+use App\Models\Image;
 
 class Recipe extends Model
 {
@@ -38,5 +40,10 @@ class Recipe extends Model
     public function review()
     {
         return $this->hasOne(Review::class);
+    }
+
+    public function image(): MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }
