@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,12 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard/recipes/{id}/edit', [RecipeController::class, 'edit'])->name('recipe.edit');
     Route::post('/dashboard/recipes/{id}/update', [RecipeController::class, 'update'])->name('update.recipe');
     Route::get('/dashboard/recipes/{id}/delete', [RecipeController::class, 'delete'])->name('delete.recipe');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';

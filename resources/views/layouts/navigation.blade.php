@@ -27,6 +27,11 @@
                         <a href="#" class="block p-2" aria-current="true">Settings</a>
                     </li>
                     <li class="">
+                        <a class="block p-2" href="{{ route('profile.edit') }}">
+                            {{ __('Profile') }}
+                        </a>
+                    </li>
+                    <li class="">
                         <a class="block p-2" href="{{ route('logout.perform') }}">
                             {{ __('Log Out') }}
                         </a>
