@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('newsletter-opt-in');
         });
+
+        Schema::table('listings', function (Blueprint $table) {
+            $table->longText('description')->nullable()->change();
+        });
     }
 
     /**
