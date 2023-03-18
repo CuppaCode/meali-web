@@ -16,7 +16,7 @@
         <label for="image" class="flex p-3 rounded-full bg-orange-400 self-end shadow-xl drop-shadow-xl">
             <x-heroicons::outline.camera class="cursor-pointer w-5 h-5 text-white"/>
         </label>
-        <input type="file" id="image" name="image" capture="environment" accept=".jpeg, .jpg, .png, .webp" oninput="document.querySelector('#image-name-wrapper').innerHTML = this.value.split('\\')[this.value.split('\\').length - 1]" hidden>
+        <input type="file" id="image" name="image" accept=".jpeg, .jpg, .png" oninput="document.querySelector('#image-name-wrapper').innerHTML = this.value.split('\\')[this.value.split('\\').length - 1]" hidden>
         <span id="image-name-wrapper"></span>
     </div>
     
