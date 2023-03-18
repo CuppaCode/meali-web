@@ -59,6 +59,17 @@
                         <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
+                    <!-- Opt-in newsletter -->
+                    <div class="mt-4">
+                        <input id="opt_in_newsletter" class="shadow appearance-none border rounded py-2 px-2 -mt-1 mr-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="checkbox"
+                                        name="opt_in_newsletter" />
+
+                        <x-input-label class="pt-4 inline-block" for="opt_in_newsletter" :value="__('Subscribe to our newsletter')" />
+
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                    </div>
+
                     <x-login-button class="p-2 mt-6">
                         {{ __('Register') }}
                     </x-login-button>
